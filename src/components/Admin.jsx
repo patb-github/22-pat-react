@@ -33,16 +33,19 @@ function Admin({people, setPeople, id, setId}) {
             <form onSubmit={handleSubmit}>
                 <h2>Create User Here</h2>
                 <input 
+                    required
                     type="text" 
                     placeholder='Name' 
                     onChange={e => setName(e.target.value)}
                     value={name}/>
                 <input 
+                    required
                     type="text" 
                     placeholder='Last Name'
                     onChange={e => setLastName(e.target.value)}
                     value={lastName}/>
                 <input 
+                    required
                     type="text" 
                     placeholder='Position'
                     onChange={e => setPosition(e.target.value)}
