@@ -1,10 +1,10 @@
-
+import picture from "../assets/22_Pat.jpg";
 
 function Owner() {
   return (
     <div>
-        <h2>Pat - Group B - 22</h2>
-        <img src="../assets/22_Pat.jpg" alt="" />
+        <h2>Pat - GenMate B - 22</h2>
+        <img src={picture} width="100" alt="" />
         <h3>About me</h3>
         <p>
             Hi, I'm Pat! I'm an aspiring software developer from the 

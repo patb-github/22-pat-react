@@ -1,12 +1,7 @@
-import React, { useState, useContext, useEffect, useCallback, useMemo } from 'react';
 import User from './components/User';
 import Admin from './components/Admin';
 
-function App({sectorName, setSectorName, isUser, setIsUser, isAdmin, setIsAdmin}) {
-  
-  useEffect(() => {
-    setSectorName("React - Assessment");
-  }, []);
+function App({sectorName, setSectorName, isUser, setIsUser, isAdmin, setIsAdmin, people, setPeople}) {
   
   function toggleUser() {
     setSectorName("Home - User Sector");
@@ -19,6 +14,7 @@ function App({sectorName, setSectorName, isUser, setIsUser, isAdmin, setIsAdmin}
     setIsUser(false);
     setIsAdmin(true);
   }
+
   return (
     <div>
       <h1>Generation Thailand</h1>
@@ -36,8 +32,8 @@ function App({sectorName, setSectorName, isUser, setIsUser, isAdmin, setIsAdmin}
         </button>
       </div>
       {/* <Outlet /> */}
-      {isUser && <User />}
-      {isAdmin && <Admin />}
+      {isUser && <User people={people}/>}
+      {isAdmin && <Admin people={people} setPeople={setPeople}/>}
     </div>
   )
 }

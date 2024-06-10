@@ -1,8 +1,23 @@
-import React, { useState, useContext, useEffect, useCallback, useMemo } from 'react';
-
-function User() {
+function User({people}) {
   return (
-    <div>User</div>
+    <table className="table-auto">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Position</th>
+            </tr>
+        </thead>
+        <tbody>
+            {people.map(person => 
+                <tr>
+                    <td>person.name</td>
+                    <td>person.lastName</td>
+                    <td>person.position</td>
+                </tr>
+            )}
+        </tbody>
+    </table>
   )
 }
 
