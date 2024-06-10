@@ -1,6 +1,6 @@
-import { Outlet, Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, Outlet } from "react-router-dom";
 import App from "../App";
-import React, { useState, useContext, useEffect, useCallback, useMemo } from 'react';
 
 function Layout() {
     const [sectorName, setSectorName] = useState("React - Assessment");
@@ -8,6 +8,7 @@ function Layout() {
     const [isUser, setIsUser] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     const [people, setPeople] = useState([]);
+    const [id, setId] = useState(0);
 
     return (
         <div>
@@ -38,7 +39,9 @@ function Layout() {
                             isAdmin={isAdmin}
                             setIsAdmin={setIsAdmin}
                             people={people}
-                            setPeople={setPeople}/>}
+                            setPeople={setPeople}
+                            id={id}
+                            setId={setId}/>}
             <Outlet />
         </div>
     )

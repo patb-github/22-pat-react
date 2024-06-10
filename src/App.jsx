@@ -1,7 +1,9 @@
 import User from './components/User';
 import Admin from './components/Admin';
 
-function App({sectorName, setSectorName, isUser, setIsUser, isAdmin, setIsAdmin, people, setPeople}) {
+function App({sectorName, setSectorName, isUser, 
+              setIsUser, isAdmin, setIsAdmin, people, 
+              setPeople, id, setId}) {
   
   function toggleUser() {
     setSectorName("Home - User Sector");
@@ -33,7 +35,7 @@ function App({sectorName, setSectorName, isUser, setIsUser, isAdmin, setIsAdmin,
       </div>
       {/* <Outlet /> */}
       {isUser && <User people={people}/>}
-      {isAdmin && <Admin people={people} setPeople={setPeople}/>}
+      {isAdmin && <Admin people={people} setPeople={setPeople} id={id} setId={setId}/>}
     </div>
   )
 }

@@ -10,10 +10,10 @@ function User({people}) {
         </thead>
         <tbody>
             {people.map(person => 
-                <tr>
-                    <td>person.name</td>
-                    <td>person.lastName</td>
-                    <td>person.position</td>
+                <tr key={person.id}>
+                    <td>{person.name}</td>
+                    <td>{person.lastName}</td>
+                    <td>{person.position}</td>
                 </tr>
             )}
         </tbody>

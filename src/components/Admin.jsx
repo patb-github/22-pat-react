@@ -1,19 +1,52 @@
-import React, { useState, useContext, useEffect, useCallback, useMemo } from 'react';
+import React, { useState } from 'react';
 
-function Admin({people, setPeople}) {
-    const [Name, setName] = useState("");
+function Admin({people, setPeople, id, setId}) {
+    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [position, setPosition] = useState("");
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        setPeople(prev => [...prev, {
+            id: id,
+            name: name, 
+            lastName: lastName, 
+            position: position
+        }])
+        
+        setId(prev => prev + 1);
+        // clear input fields
+        setName("");
+        setLastName("");
+        setPosition("");
+    }
 
     function deletePerson({target}) {
-        
+        setPeople(prev => prev.filter(
+            // use loose equality because person.id is a number, while target.id is a string
+            person => person.id != target.id 
+        ));
     }
 
     return (
         <div>
-            <form >
+            <form onSubmit={handleSubmit}>
                 <h2>Create User Here</h2>
-                <input type="text" placeholder='Name'/>
-                <input type="text" placeholder='Last Name'/>
-                <input type="text" placeholder='Position'/>
+                <input 
+                    type="text" 
+                    placeholder='Name' 
+                    onChange={e => setName(e.target.value)}
+                    value={name}/>
+                <input 
+                    type="text" 
+                    placeholder='Last Name'
+                    onChange={e => setLastName(e.target.value)}
+                    value={lastName}/>
+                <input 
+                    type="text" 
+                    placeholder='Position'
+                    onChange={e => setPosition(e.target.value)}
+                    value={position}/>
                 <button type='submit'>Save</button>
             </form>
             <table className="table-auto">
@@ -27,12 +60,12 @@ function Admin({people, setPeople}) {
                 </thead>
                 <tbody>
                     {people.map(person => 
-                        <tr>
-                            <td>person.name</td>
-                            <td>person.lastName</td>
-                            <td>person.position</td>
+                        <tr key={person.id}>
+                            <td>{person.name}</td>
+                            <td>{person.lastName}</td>
+                            <td>{person.position}</td>
                             <td>
-                                <button onClick={deletePerson}>Delete</button>
+                                <button id={person.id} onClick={deletePerson}>Delete</button>
                             </td>
                         </tr>
                     )}
